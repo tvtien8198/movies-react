@@ -1,0 +1,132 @@
+@use '../../scss/' as *;
+
+
+.logo {
+    @include flex(center, unset);
+    margin-top: 1rem;
+    img {
+        width: 120px;
+        margin-right: 2rem;
+        @include mobile {
+            margin-right: 0;
+            width: 100px;
+        }
+    }
+}
+
+.header {
+    height: $header-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    transition: height 0.3s ease, background-color 0.3s ease;
+
+    &.shrink {
+        height: $header-shrink-height;
+        background-color: $body-bg;
+    }
+
+    &__wrap {
+        @include flex(center, space-between);
+        height: auto;
+        padding: .5rem 2rem;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-image: linear-gradient(to bottom, #000, rgba(0, 0, 0, 0));
+        }
+        @include mobile {
+            justify-content: center;
+        }
+    }
+    &__left {
+        @include flex(center, space-between);
+        z-index: 10;
+    }
+    &__right {
+
+        @include flex(center, space-between);
+        z-index: 10;
+        cursor: pointer;
+        .title,
+        .icon-right,
+        .profile{
+            @include flex(center, center);
+            margin-left: 1rem;
+        }
+        .icon-right{
+            font-size: 1.5rem;
+            position: relative;
+            .dot{
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: .5rem;
+                height: .5rem;
+                border-radius: 100%;
+                background-color: red;
+            }
+        }
+        .profile{
+            width: 2rem;
+            height: 2rem;
+        }
+        @include mobile {
+            display: none
+        }
+    }
+
+    &__nav {
+        @include flex(center, unset);
+
+        & > * ~ * {
+            margin-left: 2rem;
+        }
+
+        li {
+            padding: 5px 0 2px 0;
+            position: relative;
+            font-size: 1.2rem;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                transition: width 0.5s ease;
+                height: 2px;
+                background-color: $white;
+            }
+
+            &.active::after,
+            &:hover::after {
+                width: 100%;
+            }
+        }
+
+        @include mobile {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5rem;
+            width: 100%;
+            background-color: $body-bg;
+            padding: 0 2rem;
+            box-shadow: $box-shadow;
+
+            @include flex(center, space-between);
+
+            & > * ~ * {
+                margin-left: 0;
+            }
+        }
+    }
+}
