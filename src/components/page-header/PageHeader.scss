@@ -11,9 +11,11 @@
     background-size: cover;
     background-repeat: no-repeat;
 
-    h2 {
+    h1 {
         position: relative;
         z-index: 99;
+        letter-spacing: 5px;
+        text-transform: uppercase;
     }
 
     &::after {
