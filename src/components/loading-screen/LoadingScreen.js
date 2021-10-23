@@ -3,7 +3,7 @@ import logo from '../../assets/netflix.png';
 
 function LoadingScreen() {
     return (
-        <div class="container-loading">
+        <div className="container-loading">
             <img className="logo-loading" src={logo} alt="Netflix" />
             <div className="loader loader-1">
                 <div className="loader-outter"></div>
